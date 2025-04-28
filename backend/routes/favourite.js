@@ -21,7 +21,7 @@ router.put("/them-sach-yeu-thich", authenticateToken, async (req, res) => {
 });
 
 //Xoa khoi yeu thich
-router.delete("/xoa-khoi-yeu-thich", authenticateToken, async (req, res) => {
+router.put("/xoa-khoi-yeu-thich", authenticateToken, async (req, res) => {
   try {
     const { bookid, id } = req.headers;
     const userData = await User.findById(id);
