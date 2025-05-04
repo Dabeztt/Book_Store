@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaGripLines } from "react-icons/fa";
 
 const Navbar = () => {
   const links = [
@@ -20,45 +21,89 @@ const Navbar = () => {
       link: "/thong-tin-ca-nhan",
     },
   ];
+  const [MobileNav, setMobileNav] = useState("hidden");
   return (
-    <div className="flex bg-zinc-800 text-white px-8 py-4 items-center justify-between">
-      <Link to="/" className="flex items-center">
-        <img
-          className="h-10 me-4 filter invert"
-          src="https://cdn-icons-png.flaticon.com/128/864/864685.png"
-          alt="logo"
-        />
-        <h1 className="text-2xl font-semibold">BookStore</h1>
-      </Link>
-      <div className="nav-links-bookstore flex items-center gap-4">
-        <div className="flex gap-4">
-          {links.map((items, i) => (
+    <>
+      <nav className="z-50 relative flex bg-zinc-800 text-white px-8 py-4 items-center justify-between">
+        <Link to="/" className="flex items-center">
+          <img
+            className="h-10 me-4 filter invert"
+            src="https://cdn-icons-png.flaticon.com/128/864/864685.png"
+            alt="logo"
+          />
+          <h1 className="text-2xl font-semibold">BookStore</h1>
+        </Link>
+        <div className="nav-links-bookstore block md:flex items-center gap-4">
+          <div className="hidden md:flex gap-4">
+            {links.map((items, i) => (
+              <Link
+                to={items.link}
+                className="hover:text-blue-500 transition-all duration-300"
+                key={i}
+              >
+                {items.title}
+                {""}
+              </Link>
+            ))}
+          </div>
+          <div className="hidden md:flex gap-4">
             <Link
-              to={items.link}
-              className="hover:text-blue-500 transition-all duration-300"
-              key={i}
+              to="/dang-nhap"
+              className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
             >
-              {items.title}
-              {""}
+              Đăng nhập
             </Link>
-          ))}
-        </div>
-        <div className="flex gap-4 flex">
-          <Link
-            to="/dang-nhap"
-            className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
+            <Link
+              to="/dang-ky"
+              className="px-4 py-1 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
+            >
+              Đăng ký
+            </Link>
+          </div>
+          <button
+            className="text-white text-2xl hover:text-zinc-400"
+            onClick={() =>
+              MobileNav === "hidden"
+                ? setMobileNav("block")
+                : setMobileNav("hidden")
+            }
           >
-            Đăng nhập
-          </Link>
-          <Link
-            to="/dang-ky"
-            className="px-4 py-1 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
-          >
-            Đăng ký
-          </Link>
+            <FaGripLines />
+          </button>
         </div>
+      </nav>
+      <div
+        className={`${MobileNav} bg-zinc-800 h-screen absolute top-0 left-0 w-full z-40 flex flex-col items-center justify-center`}
+      >
+        {links.map((items, i) => (
+          <Link
+            to={items.link}
+            className={`${MobileNav} text-white text-4xl mb-8 font-semibold hover:text-blue-500 transition-all duration-300`}
+            key={i}
+            onClick={() =>
+              MobileNav === "hidden"
+                ? setMobileNav("block")
+                : setMobileNav("hidden")
+            }
+          >
+            {items.title}
+            {""}
+          </Link>
+        ))}
+        <Link
+          to="/dang-nhap"
+          className={`${MobileNav} px-8 mb-8 text-3xl font-semibold py-2 border border-blue-500 rounded text-white hover:bg-white hover:text-zinc-800 transition-all duration-300`}
+        >
+          Đăng nhập
+        </Link>
+        <Link
+          to="/dang-ky"
+          className={`${MobileNav} px-8 mb-8 text-3xl font-semibold py-2 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300`}
+        >
+          Đăng ký
+        </Link>
       </div>
-    </div>
+    </>
   );
 };
 
