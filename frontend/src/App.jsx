@@ -8,6 +8,7 @@ import LogIn from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
+import ViewBookDetails from "./components/ViewBookDetails/ViewBookDetails";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/thong-tin-ca-nhan" element={<Profile />} />
           <Route path="/dang-nhap" element={<LogIn />} />
           <Route path="/dang-ky" element={<SignUp />} />
+          <Route path="/chi-tiet-sach/:id" element={<ViewBookDetails />} />
         </Routes>
         <Footer />
       </Router>
