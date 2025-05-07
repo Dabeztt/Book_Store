@@ -43,30 +43,43 @@ const Navbar = () => {
         <div className="nav-links-bookstore block md:flex items-center gap-4">
           <div className="hidden md:flex gap-4">
             {links.map((items, i) => (
-              <Link
-                to={items.link}
-                className="hover:text-blue-500 transition-all duration-300"
-                key={i}
-              >
-                {items.title}
-                {""}
-              </Link>
+              <div className="flex items-center">
+                {items.title === "Thông tin cá nhân" ? (
+                  <Link
+                    to={items.link}
+                    className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
+                    key={i}
+                  >
+                    {items.title}
+                  </Link>
+                ) : (
+                  <Link
+                    to={items.link}
+                    className="hover:text-blue-500 transition-all duration-300"
+                    key={i}
+                  >
+                    {items.title}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
-          <div className="hidden md:flex gap-4">
-            <Link
-              to="/dang-nhap"
-              className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
-            >
-              Đăng nhập
-            </Link>
-            <Link
-              to="/dang-ky"
-              className="px-4 py-1 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
-            >
-              Đăng ký
-            </Link>
-          </div>
+          {isLoggedIn === false && (
+            <div className="hidden md:flex gap-4">
+              <Link
+                to="/dang-nhap"
+                className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
+              >
+                Đăng nhập
+              </Link>
+              <Link
+                to="/dang-ky"
+                className="px-4 py-1 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
+              >
+                Đăng ký
+              </Link>
+            </div>
+          )}
           <button
             className="block md:hidden text-white text-2xl hover:text-zinc-400"
             onClick={() =>
@@ -97,18 +110,22 @@ const Navbar = () => {
             {""}
           </Link>
         ))}
-        <Link
-          to="/dang-nhap"
-          className={`${MobileNav} px-8 mb-8 text-3xl font-semibold py-2 border border-blue-500 rounded text-white hover:bg-white hover:text-zinc-800 transition-all duration-300`}
-        >
-          Đăng nhập
-        </Link>
-        <Link
-          to="/dang-ky"
-          className={`${MobileNav} px-8 mb-8 text-3xl font-semibold py-2 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300`}
-        >
-          Đăng ký
-        </Link>
+        {isLoggedIn === false && (
+          <>
+            <Link
+              to="/dang-nhap"
+              className={`${MobileNav} px-8 mb-8 text-3xl font-semibold py-2 border border-blue-500 rounded text-white hover:bg-white hover:text-zinc-800 transition-all duration-300`}
+            >
+              Đăng nhập
+            </Link>
+            <Link
+              to="/dang-ky"
+              className={`${MobileNav} px-8 mb-8 text-3xl font-semibold py-2 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300`}
+            >
+              Đăng ký
+            </Link>
+          </>
+        )}
       </div>
     </>
   );
