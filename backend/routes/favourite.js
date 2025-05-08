@@ -3,7 +3,7 @@ const User = require("../models/user");
 const { authenticateToken } = require("./userAuth");
 
 //Them sach vao yeu thich
-router.put("/them-sach-yeu-thich", authenticateToken, async (req, res) => {
+router.put("/them-vao-yeu-thich", authenticateToken, async (req, res) => {
   try {
     const { bookid, id } = req.headers;
     const userData = await User.findById(id);
@@ -36,7 +36,7 @@ router.put("/xoa-khoi-yeu-thich", authenticateToken, async (req, res) => {
 });
 
 //Xem sach yeu thich
-router.get("/xem-sach-yeu-thich", authenticateToken, async (req, res) => {
+router.get("/sach-yeu-thich", authenticateToken, async (req, res) => {
   try {
     const { id } = req.headers;
     const userData = await User.findById(id).populate("favourites");

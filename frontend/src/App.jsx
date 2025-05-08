@@ -11,10 +11,13 @@ import Profile from "./pages/Profile";
 import ViewBookDetails from "./components/ViewBookDetails/ViewBookDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./store/auth";
+import Favourites from "./components/Profile/Favourites";
+import UserOrderHistory from "./components/Profile/UserOrderHistory";
+import Settings from "./components/Profile/Settings";
 
 const App = () => {
   const dispatch = useDispatch();
-  const role = useSelector((state) => state.auth.role);
+  //const role = useSelector((state) => state.auth.role);
   useEffect(() => {
     if (
       localStorage.getItem("id") &&
@@ -32,7 +35,14 @@ const App = () => {
         <Route exact path="/" element={<Home />} />
         <Route path="/sach" element={<AllBooks />} />
         <Route path="/gio-hang" element={<Cart />} />
-        <Route path="/thong-tin-ca-nhan" element={<Profile />} />
+        <Route path="/thong-tin-ca-nhan" element={<Profile />}>
+          <Route index element={<Favourites />} />
+          <Route
+            path="/thong-tin-ca-nhan/lich-su-dat-hang"
+            element={<UserOrderHistory />}
+          />
+          <Route path="/thong-tin-ca-nhan/cai-dat" element={<Settings />} />
+        </Route>
         <Route path="/dang-nhap" element={<LogIn />} />
         <Route path="/dang-ky" element={<SignUp />} />
         <Route path="/chi-tiet-sach/:id" element={<ViewBookDetails />} />
