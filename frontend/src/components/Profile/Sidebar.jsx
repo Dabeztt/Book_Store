@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRightFromBracket } from "react-icons/fa6";
 
 const SideBar = ({ data }) => {
   return (
@@ -35,7 +35,7 @@ const SideBar = ({ data }) => {
         </Link>
       </div>
       <button className="bg-zinc-900 w-3/6 lg:w-full mt-4 lg:mt-0 text-white font-semibold flex items-center justify-center py-2 rounded hover:bg-white hover:text-zinc-900 transition-all duration-300">
-        Đăng xuất <FaArrowRight className="ms-4" />
+        Đăng xuất <FaArrowRightFromBracket className="ms-4" />
       </button>
     </div>
   );
