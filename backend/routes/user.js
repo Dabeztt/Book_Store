@@ -90,7 +90,7 @@ router.get("/thong-tin-user", authenticateToken, async (req, res) => {
 });
 
 //Cap nhat dia chi
-router.put("/dia-chi", authenticateToken, async (req, res) => {
+router.put("/cap-nhat-dia-chi", authenticateToken, async (req, res) => {
   try {
     const { id } = req.headers;
     const { address } = req.body;
