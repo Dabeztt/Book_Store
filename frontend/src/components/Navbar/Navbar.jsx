@@ -21,11 +21,25 @@ const Navbar = () => {
       title: "Thông tin cá nhân",
       link: "/thong-tin-ca-nhan",
     },
+    {
+      title: "Admin",
+      link: "/thong-tin-ca-nhan",
+    },
   ];
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const role = useSelector((state) => state.auth.role);
 
   if (isLoggedIn === false) {
-    links.splice(2, 2);
+    links.splice(2);
+  }
+
+  if (isLoggedIn == true && role === "user") {
+    links.splice(4, 1);
+  }
+
+  if (isLoggedIn === true && role === "admin") {
+    links.splice(3, 1);
+    links.splice(2, 1);
   }
 
   const [MobileNav, setMobileNav] = useState("hidden");
@@ -35,7 +49,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center">
           <img
             className="h-10 me-4 filter invert"
-            src="https://cdn-icons-png.flaticon.com/128/864/864685.png"
+            src="./book.png"
             alt="logo"
           />
           <h1 className="text-2xl font-semibold">BookStore</h1>
@@ -44,7 +58,8 @@ const Navbar = () => {
           <div className="hidden md:flex gap-4">
             {links.map((items, i) => (
               <div className="flex items-center">
-                {items.title === "Thông tin cá nhân" ? (
+                {items.title === "Thông tin cá nhân" ||
+                items.title === "Admin" ? (
                   <Link
                     to={items.link}
                     className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"

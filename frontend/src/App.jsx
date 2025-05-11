@@ -14,10 +14,12 @@ import { authActions } from "./store/auth";
 import Favourites from "./components/Profile/Favourites";
 import UserOrderHistory from "./components/Profile/UserOrderHistory";
 import Settings from "./components/Profile/Settings";
+import AllOrders from "./pages/AllOrders";
+import AddBook from "./pages/AddBook";
 
 const App = () => {
   const dispatch = useDispatch();
-  //const role = useSelector((state) => state.auth.role);
+  const role = useSelector((state) => state.auth.role);
   useEffect(() => {
     if (
       localStorage.getItem("id") &&
@@ -36,7 +38,14 @@ const App = () => {
         <Route path="/sach" element={<AllBooks />} />
         <Route path="/gio-hang" element={<Cart />} />
         <Route path="/thong-tin-ca-nhan" element={<Profile />}>
-          <Route index element={<Favourites />} />
+          {role === "user" ? (
+            <Route index element={<Favourites />} />
+          ) : (
+            <Route index element={<AllOrders />} />
+          )}
+          {role === "admin" && (
+            <Route path="/thong-tin-ca-nhan/them-sach" element={<AddBook />} />
+          )}
           <Route
             path="/thong-tin-ca-nhan/lich-su-dat-hang"
             element={<UserOrderHistory />}
