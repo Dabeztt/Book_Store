@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../Loader/Loader";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { GrLanguage } from "react-icons/gr";
 import { FaEdit, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { MdOutlineDelete } from "react-icons/md";
@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 
 const ViewBookDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [Data, setData] = useState();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const role = useSelector((state) => state.auth.role);
@@ -47,6 +48,15 @@ const ViewBookDetails = () => {
     alert(response.data.message);
   };
 
+  const deleteBook = async () => {
+    const response = await axios.delete(
+      "http://localhost:1000/api/v1/xoa-sach",
+      { headers }
+    );
+    navigate("/sach");
+    alert(response.data.message);
+  };
+
   return (
     <>
       {Data && (
@@ -80,11 +90,17 @@ const ViewBookDetails = () => {
               )}
               {isLoggedIn === true && role === "admin" && (
                 <div className="flex flex-col md:flex-row lg:flex-col items-center justify-between lg:justify-start mt-8 lg:mt-0">
-                  <button className="bg-white rounded lg:rounded-full text-3xl p-3 flex items-center justify-center">
+                  <Link
+                    to={`/cap-nhat-sach/${id}`}
+                    className="bg-white rounded lg:rounded-full text-3xl p-3 flex items-center justify-center"
+                  >
                     <FaEdit />
                     <span className="ms-4 block lg:hidden">Chỉnh sửa</span>
-                  </button>
-                  <button className="text-red-500 rounded md:mt-0 lg:rounded-full text-3xl p-3 mt-8 md:mt-0 lg:mt-8 bg-white flex items-center justify-center">
+                  </Link>
+                  <button
+                    className="text-red-500 rounded md:mt-0 lg:rounded-full text-3xl p-3 mt-8 md:mt-0 lg:mt-8 bg-white flex items-center justify-center"
+                    onClick={deleteBook}
+                  >
                     <MdOutlineDelete />
                     <span className="ms-4 block lg:hidden">Xóa</span>
                   </button>
