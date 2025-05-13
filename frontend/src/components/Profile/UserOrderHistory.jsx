@@ -65,7 +65,7 @@ const UserOrderHistory = () => {
             </div>
           </div>
           {OrderHistory.map((items, i) => (
-            <div className="bg-zinc-800 w-full rounded py-2 px-4 flex gap-4 hover:bg-zinc-900 hover:cursor-pointer">
+            <div className="bg-zinc-800 w-full rounded py-2 px-4 flex gap-4 hover:bg-zinc-900 hover:cursor-pointer transition-all duration-300">
               <div className="w-[3%]">
                 <h1 className="text-center">{i + 1}</h1>
               </div>
