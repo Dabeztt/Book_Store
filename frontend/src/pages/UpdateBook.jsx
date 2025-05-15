@@ -38,7 +38,7 @@ const UpdateBook = () => {
         alert("Vui lòng nhập dữ liệu");
       } else {
         const response = await axios.put(
-          "https://book-store-3gd4.onrender.com/api/v1/cap-nhat-sach",
+          "https://book-store-yacq.onrender.com/api/v1/cap-nhat-sach",
           Data,
           { headers }
         );
@@ -61,7 +61,7 @@ const UpdateBook = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        `https://book-store-3gd4.onrender.com/api/v1/tim-sach/${id}`
+        `https://book-store-yacq.onrender.com/api/v1/tim-sach/${id}`
       );
       setData(response.data.data);
     };

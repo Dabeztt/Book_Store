@@ -11,7 +11,7 @@ const BookCard = ({ data, favourite }) => {
 
   const handleRemoveBook = async () => {
     const response = await axios.put(
-      "https://book-store-3gd4.onrender.com/api/v1/xoa-khoi-yeu-thich",
+      "https://book-store-yacq.onrender.com/api/v1/xoa-khoi-yeu-thich",
       {},
       { headers }
     );

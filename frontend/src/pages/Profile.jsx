@@ -16,7 +16,7 @@ const Profile = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "https://book-store-3gd4.onrender.com/api/v1/thong-tin-user",
+        "https://book-store-yacq.onrender.com/api/v1/thong-tin-user",
         { headers }
       );
       setProfile(response.data);

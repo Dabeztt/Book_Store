@@ -21,7 +21,7 @@ const AllOrders = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "https://book-store-3gd4.onrender.com/api/v1/xem-tat-ca-don",
+        "https://book-store-yacq.onrender.com/api/v1/xem-tat-ca-don",
         { headers }
       );
       setAllOrders(response.data.data);
@@ -37,7 +37,7 @@ const AllOrders = () => {
   const submitChanges = async (i) => {
     const id = AllOrders[i]._id;
     const response = await axios.put(
-      `https://book-store-3gd4.onrender.com/api/v1/cap-nhat-don-hang/${id}`,
+      `https://book-store-yacq.onrender.com/api/v1/cap-nhat-don-hang/${id}`,
       Values,
       { headers }
     );

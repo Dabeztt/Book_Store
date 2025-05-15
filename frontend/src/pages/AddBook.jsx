@@ -34,7 +34,7 @@ const AddBook = () => {
         alert("Vui lòng nhập dữ liệu");
       } else {
         const response = await axios.post(
-          "https://book-store-3gd4.onrender.com/api/v1/them-sach",
+          "https://book-store-yacq.onrender.com/api/v1/them-sach",
           Data,
           { headers }
         );

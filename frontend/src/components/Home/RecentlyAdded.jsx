@@ -8,7 +8,7 @@ const RecentlyAdded = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "https://book-store-3gd4.onrender.com/api/v1/sach-gan-day"
+        "https://book-store-yacq.onrender.com/api/v1/sach-gan-day"
       );
       setData(response.data.data);
     };
@@ -27,7 +27,7 @@ const RecentlyAdded = () => {
         {Data &&
           Data.map((items, i) => (
             <div key={i}>
-              <BookCard data={items} />{" "}
+              <BookCard data={items} />
             </div>
           ))}
       </div>
