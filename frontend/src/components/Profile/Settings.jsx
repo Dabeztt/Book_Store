@@ -19,7 +19,7 @@ const Settings = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:1000/api/v1/thong-tin-user",
+        "https://book-store-3gd4.onrender.com/api/v1/thong-tin-user",
         { headers }
       );
       setProfileData(response.data);
@@ -30,7 +30,7 @@ const Settings = () => {
 
   const submitAddress = async () => {
     const response = await axios.put(
-      "http://localhost:1000/api/v1/cap-nhat-dia-chi",
+      "https://book-store-3gd4.onrender.com/api/v1/cap-nhat-dia-chi",
       Value,
       { headers }
     );

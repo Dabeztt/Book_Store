@@ -28,7 +28,7 @@ const SignUp = () => {
         alert("Không được bỏ trống thông tin");
       } else {
         const response = await axios.post(
-          "http://localhost:1000/api/v1/dang-ky",
+          "https://book-store-3gd4.onrender.com/api/v1/dang-ky",
           Values
         );
         alert(response.data.message);

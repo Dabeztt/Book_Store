@@ -16,9 +16,12 @@ const Cart = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const res = await axios.get("http://localhost:1000/api/v1/xem-gio-hang", {
-        headers,
-      });
+      const res = await axios.get(
+        "https://book-store-3gd4.onrender.com/api/v1/xem-gio-hang",
+        {
+          headers,
+        }
+      );
       setCart(res.data.data);
     };
     fetch();
@@ -26,7 +29,7 @@ const Cart = () => {
 
   const deleteItem = async (bookid) => {
     const response = await axios.put(
-      `http://localhost:1000/api/v1/xoa-khoi-gio-hang/${bookid}`,
+      `https://book-store-3gd4.onrender.com/v1/xoa-khoi-gio-hang/${bookid}`,
       {},
       { headers }
     );
@@ -47,7 +50,7 @@ const Cart = () => {
   const PlaceOrder = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:1000/api/v1/tao-don-hang`,
+        `https://book-store-3gd4.onrender.com/api/v1/tao-don-hang`,
         { order: Cart },
         { headers }
       );

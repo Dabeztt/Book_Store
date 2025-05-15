@@ -14,7 +14,7 @@ const UserOrderHistory = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:1000/api/v1/lich-su-don-hang",
+        "https://book-store-3gd4.onrender.com/api/v1/lich-su-don-hang",
         { headers }
       );
       setOrderHistory(response.data.data);

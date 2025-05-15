@@ -17,7 +17,7 @@ const ViewBookDetails = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        `http://localhost:1000/api/v1/tim-sach/${id}`
+        `https://book-store-3gd4.onrender.com/api/v1/tim-sach/${id}`
       );
       setData(response.data.data);
     };
@@ -32,7 +32,7 @@ const ViewBookDetails = () => {
 
   const handleFavourite = async () => {
     const response = await axios.put(
-      "http://localhost:1000/api/v1/them-vao-yeu-thich",
+      "https://book-store-3gd4.onrender.com/api/v1/them-vao-yeu-thich",
       {},
       { headers }
     );
@@ -41,7 +41,7 @@ const ViewBookDetails = () => {
 
   const handleCart = async () => {
     const response = await axios.put(
-      "http://localhost:1000/api/v1/them-vao-gio-hang",
+      "https://book-store-3gd4.onrender.com/api/v1/them-vao-gio-hang",
       {},
       { headers }
     );
@@ -50,7 +50,7 @@ const ViewBookDetails = () => {
 
   const deleteBook = async () => {
     const response = await axios.delete(
-      "http://localhost:1000/api/v1/xoa-sach",
+      "https://book-store-3gd4.onrender.com/api/v1/xoa-sach",
       { headers }
     );
     navigate("/sach");
